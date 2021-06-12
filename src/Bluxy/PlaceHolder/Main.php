@@ -85,7 +85,15 @@ class Main extends PluginBase implements Listener{
         $this->saveDefaultConfig();
 	}
   
- 
+ public function onChat(PlayerChatEvent $event) {
+        $message = str_ireplace("hello", "bye", $event->getMessage());
+	 $find = array($this->config->get("find1"), $this->config->get("find2"), $this->config->get("find3"), $this->config->get("find2"), $this->config->get("find4"));
+	 $replace = array($this->config->get("re1"), $this->config->get("re2"), $this->config->get("re3"), $this->config->get("re2"), $this->config->get("re4"));
+	 $message = str_ireplace("$find", $replace, $event->getMessage());
+	 //todo: mae these more readbale
+	 
+        $event->setMessage($message);
+}
 	
  
 
