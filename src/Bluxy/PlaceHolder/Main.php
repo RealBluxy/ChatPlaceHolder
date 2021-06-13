@@ -78,6 +78,8 @@ class Main extends PluginBase implements Listener{
 	}
   
  public function onChat(PlayerChatEvent $e) {
+	 $p = $e->getPlayer();
+	 $msg = $e->getMessage();
         
 	 $find1 = $this->config->get("find1");
 	 $find2 = $this->config->get("find2");
@@ -114,10 +116,27 @@ class Main extends PluginBase implements Listener{
 	
 	 $findarray = array($find1, $find2, $find3, $find4, $find5, $find6, $find7, $find8, $find9, $find10, $find11, $find12, $find13, $find14, $find15);
 	 $replacearray = array($replace1, $replace2, $replace3, $replace4, $replace5, $replace6, $replace7, $replace8, $replace9, $replace10, $replace11, $replace12, $replace13, $replace14, $replace15);
-	 $msg = str_ireplace($findarray, $replacearray, $e->getMessage());
+	 $msgedit = str_ireplace($findarray, $replacearray, $e->getMessage());
 	 
-        $event->setMessage($msg);
+         $event->setMessage($msgedit);
 	 
+	 //ads check
+	 
+	 $ads = [".leet.cc", ".net", ".com", ".us", ".co", ".co.uk", ".ddns", ".ddns.net", ".cf", ".me", ".cc", ".ru", ".eu", ".tk", ".gq", ".ga", ".ml", ".org", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8", ".9", "my server"];
+	 if(strpos($msg, $ads)) {
+				$p->sendMessage($this->config->get("NoAdsMsg");
+				$e->setCancelled();
+				return;
+			}
+						
+	  $swears = new Config($this->getDataFolder() . "swearwords.yml", Config::YAML);
+						
+	   $check = $swears->get("swearwords");
+						 if(strpos($msg, $check)) {
+				$p->sendMessage($this->config->get("NoswearsMsg");
+				$e->setCancelled();
+				return;
+			}
 	 //anti spam
 	 //mute chat
 	 //muteplayer
