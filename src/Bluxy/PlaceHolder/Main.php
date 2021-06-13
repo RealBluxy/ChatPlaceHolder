@@ -128,25 +128,31 @@ class Main extends PluginBase implements Listener{
 				$e->setCancelled();
 				return;
 			}
-						
+				//no swears		
 	  $swears = new Config($this->getDataFolder() . "swearwords.yml", Config::YAML);
 						
 	   $check = $swears->get("swearwords");
+						if($this->config->get("AntiSwearing") == "true") {
 						 if(strpos($msg, $check)) {
-				$p->sendMessage($this->config->get("NoswearsMsg");
+				$p->sendMessage($this->config->get("NoswearsMsg"));
 				$e->setCancelled();
 				return;
 			}
+						}
+				//no unicodes		
+	   $unis = new Config($this->getDataFolder() . "unicodes.yml", Config::YAML);
+						
+	   $check1 = $unis->get("unicodes");
+						if($this->config->get("AntiUnicodes") == "true") {
+						 if(strpos($msg, $check1)) {
+				$p->sendMessage($this->config->get("NoUnicodesMsg"));
+				$e->setCancelled();
+				return;
+			}
+						}
 	 //anti spam
 	 //mute chat
 	 //muteplayer
-	 //anti unicode
 	 //neplugin: anti raid
-}
-	
- 
-
-
-	
-	
+}	
 }
