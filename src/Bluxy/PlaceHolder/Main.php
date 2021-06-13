@@ -54,18 +54,7 @@ use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\entity\{Effect, EffectInstance};
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
-use pocketmine\network\mcpe\protocol\ActorEventPacket;
-use pocketmine\network\mcpe\protocol\EntityEventPacket;
-use pocketmine\network\mcpe\protocol\LevelEventPacket;
-use pocketmine\network\mcpe\protocol\AddActorPacket;
-use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\nbt\tag\StringTag;
-use pocketmine\network\mcpe\protocol\SetTitlePacket;
-
-use BlockHorizons\Fireworks\entity\FireworksRocket;
-use BlockHorizons\Fireworks\item\Fireworks;
-use BlockHorizons\Fireworks\Loader;
-use Bluxy\TitleTask as TitleTask;
+use pocketmine\event\player\PlayerChatEvent;
 
 class Main extends PluginBase implements Listener{
 
@@ -76,6 +65,9 @@ class Main extends PluginBase implements Listener{
         $this->saveResource("config.yml");
         $this->config = $this->getConfig();
         $this->saveDefaultConfig();
+	    
+	    
+       
     }
    
   public function onDisable() : void{
@@ -85,14 +77,52 @@ class Main extends PluginBase implements Listener{
         $this->saveDefaultConfig();
 	}
   
- public function onChat(PlayerChatEvent $event) {
-        $message = str_ireplace("hello", "bye", $event->getMessage());
-	 $find = array($this->config->get("find1"), $this->config->get("find2"), $this->config->get("find3"), $this->config->get("find2"), $this->config->get("find4"));
-	 $replace = array($this->config->get("re1"), $this->config->get("re2"), $this->config->get("re3"), $this->config->get("re2"), $this->config->get("re4"));
-	 $message = str_ireplace("$find", $replace, $event->getMessage());
-	 //todo: mae these more readbale
+ public function onChat(PlayerChatEvent $e) {
+        
+	 $find1 = $this->config->get("find1");
+	 $find2 = $this->config->get("find2");
+	 $find3 = $this->config->get("find3");
+	 $find4 = $this->config->get("find4");
+	 $find5 = $this->config->get("find5");
+	 $find6 = $this->config->get("find6");
+	 $find7 = $this->config->get("find7");
+	 $find8 = $this->config->get("find8");
+	 $find9 = $this->config->get("find9");
+	 $find10 = $this->config->get("find10");
+	 $find11 = $this->config->get("find11");
+	 $find12 = $this->config->get("find12");
+	 $find13 = $this->config->get("find13");
+	 $find14 = $this->config->get("find14");
+	 $find15 = $this->config->get("find15");
 	 
-        $event->setMessage($message);
+	 $replace1 = $this->config->get("replace1");
+	 $replace2 = $this->config->get("replace2");
+	 $replace3 = $this->config->get("replace3");
+	 $replace4 = $this->config->get("replace4");
+	 $replace5 = $this->config->get("replace5");
+	 $replace6 = $this->config->get("replace6");
+	 $replace7 = $this->config->get("replace7");
+	 $replace8 = $this->config->get("replace8");
+	 $replace9 = $this->config->get("replace9");
+	 $replace10 = $this->config->get("replace10");
+	 $replace11 = $this->config->get("replace11");
+	 $replace12 = $this->config->get("replace12");
+	 $replace13 = $this->config->get("replace13");
+	 $replace14 = $this->config->get("replace14");
+	 $replace15 = $this->config->get("replace15");
+	 
+	
+	 $findarray = array($find1, $find2, $find3, $find4, $find5, $find6, $find7, $find8, $find9, $find10, $find11, $find12, $find13, $find14, $find15);
+	 $replacearray = array($replace1, $replace2, $replace3, $replace4, $replace5, $replace6, $replace7, $replace8, $replace9, $replace10, $replace11, $replace12, $replace13, $replace14, $replace15);
+	 $msg = str_ireplace($findarray, $replacearray, $e->getMessage());
+	 
+        $event->setMessage($msg);
+	 
+	 //anti spam
+	 //mute chat
+	 //muteplayer
+	 //anti unicode
+	 //neplugin: anti raid
 }
 	
  
