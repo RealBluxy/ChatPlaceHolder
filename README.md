@@ -21,5 +21,9 @@ to install this plugin, simply download it from poggit and place the `ChatPlaceH
 - [ ] AntiSpam
 - [ ] Mute Chat
 - [ ] Mute Player
+- [ ] Improve Anti Swear And Anti Unicode
+- [ ] Anti Command Spam
+- [ ] Vip Chat
+- [ ] Staff Chat
 
 Have An Idea ? Suggest it via discord "Bluxy#0001"
