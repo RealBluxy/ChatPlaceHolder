@@ -56,13 +56,17 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerChatEvent;
 
-class Main extends PluginBase implements Listener{
+class main extends PluginBase implements Listener{
 
+	public $this->config = $this->getConfig();
+	
     public function onEnable(){
     
 	  $this->getServer()->GetPluginManager()->registerEvents($this, $this);
         @mkdir($this->getDataFolder());
         $this->saveResource("config.yml");
+	    $this->saveResource("swearwords.yml");
+	     $this->saveResource("unicodes.yml");
         $this->config = $this->getConfig();
         $this->saveDefaultConfig();
 	    
@@ -118,7 +122,7 @@ class Main extends PluginBase implements Listener{
 	 $replacearray = array($replace1, $replace2, $replace3, $replace4, $replace5, $replace6, $replace7, $replace8, $replace9, $replace10, $replace11, $replace12, $replace13, $replace14, $replace15);
 	 $msgedit = str_ireplace($findarray, $replacearray, $e->getMessage());
 	 
-         $event->setMessage($msgedit);
+         $e->setMessage($msgedit);
 	 
 	 //ads check
 	 
