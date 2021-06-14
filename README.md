@@ -15,6 +15,7 @@ to install this plugin, simply download it from poggit and place the `ChatPlaceH
 - anti swear (can be edited at the `swearwords.yml` file)
 - anti unicodes (can be edited at the `unicodes.yml` file)
 - PlaceHolders
+- Anti Adertising
 
 ## Todo 
 
