@@ -58,7 +58,7 @@ use pocketmine\event\player\PlayerChatEvent;
 
 class main extends PluginBase implements Listener{
 
-	public $this->config = $this->getConfig();
+	public $cfg;
 	
     public function onEnable(){
     
@@ -67,7 +67,7 @@ class main extends PluginBase implements Listener{
         $this->saveResource("config.yml");
 	    $this->saveResource("swearwords.yml");
 	     $this->saveResource("unicodes.yml");
-        $this->config = $this->getConfig();
+        $this->config = $this->getConfig();//todo: might change this ti just   this-getconfig
         $this->saveDefaultConfig();
 	    
 	    
