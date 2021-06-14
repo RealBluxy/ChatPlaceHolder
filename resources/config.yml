@@ -1,1 +1,24 @@
+###################################################
+#              ChatPlaceHolder Config             #
+###################################################
 
+#################
+#Tips:
+# use "$n" to display the player's name !
+# use "\n" to skip a line !
+#################
+
+#Anti Adertising: This Stops Advertising On Your Server !  true = ON | false = off
+AntiAdvertising: true
+#NoAdsMsg: This Message Will Be Sent To Whoever Tries To Advertise !
+NoAdsMsg: "§c Ads Are Not Allowed On This Server!"
+
+#Anti Swearing: This Stops Swearing On Your Server ! true = ON | false = off
+AntiSwearing: true
+#NoSwearsMsg: This Message Will Be Sent To Whoever Tries To Swear !
+NoswearsMsg: "§cSwearing Isn't Allowed On This Server!"
+
+#Anti Unicodes: This Stops People From Sending UniCodes On Your Server ! true = ON | false = off
+AntiUnicodes: true
+#NoUnicodesMsg: This Message Will Be Sent To Whoever Tries Send Unicodes !
+NoUnicodesMsg: "§cUni Codes Aren't Allowed On This Server"
