@@ -45,6 +45,7 @@ use pocketmine\Server;
 use pocketmine\scheduler\Task;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
+use pocketmine\utils\Config;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\entity\Entity;
