@@ -58,7 +58,7 @@ use pocketmine\event\player\PlayerChatEvent;
 
 class main extends PluginBase implements Listener{
 
-	public $cfg;
+	public $config;
 	
     public function onEnable(){
     
