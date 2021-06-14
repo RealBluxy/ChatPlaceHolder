@@ -124,7 +124,7 @@ class Main extends PluginBase implements Listener{
 	 
 	 $ads = [".leet.cc", ".net", ".com", ".us", ".co", ".co.uk", ".ddns", ".ddns.net", ".cf", ".me", ".cc", ".ru", ".eu", ".tk", ".gq", ".ga", ".ml", ".org", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8", ".9", "my server"];
 	 if(strpos($msg, $ads)) {
-				$p->sendMessage($this->config->get("NoAdsMsg");
+				$p->sendMessage($this->config->get("NoAdsMsg"));
 				$e->setCancelled();
 				return;
 			}
