@@ -31,4 +31,4 @@ Have An Idea ? Suggest it via discord "Bluxy#0001"
 
 ## Credits
 
-A HUGE Thanks to [Profanity Filter](http://https://github.com/developerdino/ProfanityFilter)
+A HUGE Thanks to [Profanity Filter](https://github.com/developerdino/ProfanityFilter)
