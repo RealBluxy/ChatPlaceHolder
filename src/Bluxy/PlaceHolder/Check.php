@@ -309,3 +309,4 @@ class Check
     {
         return preg_match($profanity, $string) === 1;
     }
+}
