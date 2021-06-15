@@ -158,7 +158,7 @@ class Check
               
           $this->plugin = $plugin;
       
-      $this->profanities = new Config($this->plugin->getDataFolder() . "swearwords.yml"))->getAll()["swearwords"];
+      $this->profanities = (new Config($this->plugin->getDataFolder() . "swearwords.yml"))->getAll()["swearwords"];
       
       $this->separatorExpression = $this->generateSeparatorExpression();
        $this->characterExpressions = $this->generateCharacterExpressions();
