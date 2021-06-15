@@ -151,9 +151,7 @@ class Check
     protected $separatorExpression;
     protected $characterExpressions;
 
-    /**
-     * @param null $config
-     */
+   
     public function __construct(main $plugin) {
               
           $this->plugin = $plugin;
@@ -217,13 +215,7 @@ class Check
         return $characterExpressions;
     }
 
-    /**
-     * Obfuscates string that contains a 'profanity'.
-     *
-     * @param $string
-     *
-     * @return string
-     */
+   
     public function obfuscateIfProfane($string)
     {
         if ($this->hasProfanity($string)) {
@@ -233,12 +225,8 @@ class Check
         return $string;
     }
 
-    /**
+    /*
      * Checks string for profanities based on list 'profanities'
-     *
-     * @param $string
-     *
-     * @return bool
      */
     public function hasProfanity($string)
     {
@@ -268,12 +256,6 @@ class Check
 
     /**
      * Generate a regular expression for a particular word
-     *
-     * @param $word
-     * @param $characterExpressions
-     * @param $separatorExpression
-     *
-     * @return mixed
      */
     protected function generateProfanityExpression($word, $characterExpressions, $separatorExpression)
     {
@@ -288,11 +270,6 @@ class Check
 
     /**
      * Checks a string against a profanity.
-     *
-     * @param $string
-     * @param $profanity
-     *
-     * @return bool
      */
     private function stringHasProfanity($string, $profanity)
     {
