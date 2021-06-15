@@ -12,7 +12,7 @@ to install this plugin, simply download it from poggit and place the `ChatPlaceH
 
 ## Features
 
-- anti swear (can be edited at the `swearwords.yml` file)
+- anti swearing (can be edited at the `swearwords.yml` file)
 - anti unicodes (can be edited at the `unicodes.yml` file)
 - PlaceHolders
 - Anti Adertising
@@ -22,9 +22,13 @@ to install this plugin, simply download it from poggit and place the `ChatPlaceH
 - [ ] AntiSpam
 - [ ] Mute Chat
 - [ ] Mute Player
-- [ ] Improve Anti Swear And Anti Unicode
+- [x] Improve Anti Swear And Anti Unicode
 - [ ] Anti Command Spam
 - [ ] Vip Chat
 - [ ] Staff Chat
 
 Have An Idea ? Suggest it via discord "Bluxy#0001"
+
+## Credits
+
+A HUGE Thanks to [Profanity Filter](http://https://github.com/developerdino/ProfanityFilter)
