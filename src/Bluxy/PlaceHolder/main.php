@@ -120,8 +120,8 @@ class main extends PluginBase implements Listener {
                 }
             }
             //no swears
-            $swears = (new Config($this->plugin->getDataFolder() . "swearwords.yml"))->getAll();
-            $check = new Check();
+            $swears = (new Config($this->getDataFolder() . "swearwords.yml"))->getAll();
+            $check = new Check($msg);
             if ($this->config->get("AntiSwearing") == "true") {
                 if ($check->hasProfanity($msg)) {
                     $p->sendMessage($this->config->get("NoswearsMsg"));
@@ -130,10 +130,9 @@ class main extends PluginBase implements Listener {
                 }
             }
             //no unicodes
-            $unis = (new Config($this->plugin->getDataFolder() . "unicodes.yml"))->getAll();
-            $check1 = $unis->get("unicodes");
+            $unis = (new Config($this->getDataFolder() . "unicodes.yml"))->getAll();
             if ($this->config->get("AntiUnicodes") == "true") {
-                if (strpos($msg, $check1)) {
+                if (strpos($msg, $unis)) {
                     $p->sendMessage($this->config->get("NoUnicodesMsg"));
                     $e->setCancelled();
                     return;
