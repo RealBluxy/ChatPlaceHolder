@@ -53,6 +53,8 @@ use pocketmine\entity\ {
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerChatEvent;
+use Bluxy\PlaceHolder\Check;
+
 class main extends PluginBase implements Listener {
     public $config;
     public function onEnable() {
@@ -118,17 +120,17 @@ class main extends PluginBase implements Listener {
                 }
             }
             //no swears
-            $swears = new Config($this->plugin->getDataFolder() . "swearwords.yml")->getAll()["swearwords"];
-            $check = $swears->get("swearwords");
+            $swears = (new Config($this->plugin->getDataFolder() . "swearwords.yml"))->getAll();
+            $check = new Check();
             if ($this->config->get("AntiSwearing") == "true") {
-                if (strpos($msg, $check)) {
+                if ($check->hasProfanity($msg)) {
                     $p->sendMessage($this->config->get("NoswearsMsg"));
                     $e->setCancelled();
                     return;
                 }
             }
             //no unicodes
-            $unis = new Config($this->plugin->getDataFolder() . "unicodes.yml")->getAll()["unicodes"];
+            $unis = (new Config($this->plugin->getDataFolder() . "unicodes.yml"))->getAll();
             $check1 = $unis->get("unicodes");
             if ($this->config->get("AntiUnicodes") == "true") {
                 if (strpos($msg, $check1)) {
