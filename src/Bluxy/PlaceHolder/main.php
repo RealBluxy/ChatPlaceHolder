@@ -118,7 +118,7 @@ class main extends PluginBase implements Listener {
                 }
             }
             //no swears
-            $swears = new Config($this->getDataFolder() . "swearwords.yml", Config::YAML);
+            $swears = new Config($this->plugin->getDataFolder() . "swearwords.yml")->getAll()["swearwords"];
             $check = $swears->get("swearwords");
             if ($this->config->get("AntiSwearing") == "true") {
                 if (strpos($msg, $check)) {
@@ -128,7 +128,7 @@ class main extends PluginBase implements Listener {
                 }
             }
             //no unicodes
-            $unis = new Config($this->getDataFolder() . "unicodes.yml", Config::YAML);
+            $unis = new Config($this->plugin->getDataFolder() . "unicodes.yml")->getAll()["unicodes"];
             $check1 = $unis->get("unicodes");
             if ($this->config->get("AntiUnicodes") == "true") {
                 if (strpos($msg, $check1)) {
