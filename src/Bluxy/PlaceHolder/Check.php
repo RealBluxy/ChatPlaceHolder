@@ -6,7 +6,7 @@ namespace Bluxy\PlaceHolder;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
-use Bluxy\PlaceHolder\Main;
+use Bluxy\PlaceHolder\main;
 
 class Check
 {
@@ -154,7 +154,7 @@ class Check
     /**
      * @param null $config
      */
-    public function __construct(Main $plugin) {
+    public function __construct(main $plugin) {
               
           $this->plugin = $plugin;
       
@@ -164,18 +164,7 @@ class Check
        $this->characterExpressions = $this->generateCharacterExpressions();
     }
 
-    /**
-     * Load 'profanities' from config file.
-     *
-     * @param $config
-     *
-     * @return array
-     */
-    private function loadProfanitiesFromFile($config)
-    {
-        /** @noinspection PhpIncludeInspection */
-        return include($config);
-    }
+    
 
     /**
      * Generates the separator regular expression.
