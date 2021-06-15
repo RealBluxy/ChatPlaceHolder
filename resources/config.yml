@@ -22,3 +22,51 @@ NoswearsMsg: "§cSwearing Isn't Allowed On This Server!"
 AntiUnicodes: true
 #NoUnicodesMsg: This Message Will Be Sent To Whoever Tries Send Unicodes !
 NoUnicodesMsg: "§cUni Codes Aren't Allowed On This Server"
+
+#PlaceHolders:
+
+#Find: the text that gets replaced with "Replace"
+#Replace: the text that replaces the "Find"
+#Eg:
+#Find1: :<3:
+#Replace1: ♥
+#When A Player Sends :<3: it gets replaced by ♥ in the chat
+#Find2: :discord-link:
+#Replace2: discord.gg/minecraft
+#When a Player Sends :discord-link: it gets replaced by discord.gg/minecraft in the chat
+
+#If You Want To Disable A Place Holder Just Put The Same Thing In The "Find" And "Replace"
+#Eg:
+#find1: n
+#replace1: n
+
+find1: ""
+replace1: ""
+find2: ""
+replace2: ""
+find3: ""
+replace3: ""
+find4: ""
+replace4: ""
+find5: ""
+replace5: ""
+find6: ""
+replace6: ""
+find7: ""
+replace7: ""
+find8: ""
+replace8: ""
+find9: ""
+replace9: ""
+find10: ""
+replace10: ""
+find11: ""
+replace11: ""
+find12: ""
+replace12: ""
+find13: ""
+replace13: ""
+find14: ""
+replace14: ""
+find15: ""
+replace15: ""
