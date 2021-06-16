@@ -1,6 +1,5 @@
 name: ChatPlaceHolder
 main: Bluxy\PlaceHolder\main
-api:
-- 3.13.0
+api: [4.0.0]
 author: Bluxy
 version: 1.0
