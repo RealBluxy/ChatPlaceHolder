@@ -121,7 +121,7 @@ class main extends PluginBase implements Listener {
             }
             //no swears
             $swears = (new Config($this->getDataFolder() . "swearwords.yml"))->getAll();
-            $check = new Check($msg);
+            $check = new Check($thid);
             if ($this->config->get("AntiSwearing") == "true") {
                 if ($check->hasProfanity($msg)) {
                     $p->sendMessage($this->config->get("NoswearsMsg"));
