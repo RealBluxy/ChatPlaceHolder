@@ -6,19 +6,20 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use Bluxy\PlaceHolder\main;
 
-class Check
+class Check 
 {
+
     public $plugin;
     const SEPARATOR_PLACEHOLDER = '{!!}';
 
-    /**
+    /*
      * Escaped separator characters
      */
     protected $escapedSeparatorCharacters = array(
         '\s',
     );
 
-    /**
+    /*
      * Unescaped separator characters.
      * @var array
      */
@@ -56,8 +57,7 @@ class Check
         '/',
     );
 
-
-    /**
+    /*
      * List of potential character substitutions as a regular expression.
      *
      * @var array
@@ -139,48 +139,40 @@ class Check
         '/z/' => array('z', 'Ζ', 'ž', 'Ž', 'ź', 'Ź', 'ż', 'Ż'),
     );
 
-    /**
+    /*
      * List of profanities to test against.
      *
      * @var array
      */
-    protected $profanities = array();
+    protected $profanities = [];
     protected $separatorExpression;
     protected $characterExpressions;
 
-    /**
-     * @param null $config
-     */
-    public function __construct(main $plugin)
-    {
-       $this->plugin = $plugin;
+    public function __construct(AntiSpamPro $plugin) {
+        $this->plugin = $plugin;
         $this->profanities = (new Config($this->plugin->getDataFolder() . "swearwords.yml"))->getAll()["swearwords"];
 
         $this->separatorExpression = $this->generateSeparatorExpression();
         $this->characterExpressions = $this->generateCharacterExpressions();
     }
-
-    /**
+    /*
      * Checks string for profanities based on list 'profanities'
      *
      * @param $string
      *
      * @return bool
      */
-    public function hasProfanity($string)
-    {
+    public function hasProfanity($string) {
         if (empty($string)) {
             return false;
         }
 
-        $profanities    = array();
+        $profanities = [];
         $profanityCount = count($this->profanities);
 
         for ($i = 0; $i < $profanityCount; $i++) {
-            $profanities[ $i ] = $this->generateProfanityExpression(
-                $this->profanities[ $i ],
-                $this->characterExpressions,
-                $this->separatorExpression
+            $profanities[$i] = $this->generateProfanityExpression(
+                    $this->profanities[$i], $this->characterExpressions, $this->separatorExpression
             );
         }
 
@@ -193,15 +185,14 @@ class Check
         return false;
     }
 
-    /**
+    /*
      * Obfuscates string that contains a 'profanity'.
      *
      * @param $string
      *
      * @return string
      */
-    public function obfuscateIfProfane($string)
-    {
+    public function obfuscateIfProfane($string) {
         if ($this->hasProfanity($string)) {
             $string = str_repeat("*", strlen($string));
         }
@@ -209,7 +200,7 @@ class Check
         return $string;
     }
 
-    /**
+    /*
      * Generate a regular expression for a particular word
      *
      * @param $word
@@ -218,18 +209,15 @@ class Check
      *
      * @return mixed
      */
-    protected function generateProfanityExpression($word, $characterExpressions, $separatorExpression)
-    {
+    protected function generateProfanityExpression($word, $characterExpressions, $separatorExpression) {
         $expression = '/' . preg_replace(
-                array_keys($characterExpressions),
-                array_values($characterExpressions),
-                $word
-            ) . '/i';
+                        array_keys($characterExpressions), array_values($characterExpressions), $word
+                ) . '/i';
 
         return str_replace(self::SEPARATOR_PLACEHOLDER, $separatorExpression, $expression);
     }
 
-    /**
+    /*
      * Checks a string against a profanity.
      *
      * @param $string
@@ -237,12 +225,11 @@ class Check
      *
      * @return bool
      */
-    private function stringHasProfanity($string, $profanity)
-    {
+    private function stringHasProfanity($string, $profanity) {
         return preg_match($profanity, $string) === 1;
     }
 
-    /**
+    /*
      * Generates the separator regex to test characters in between letters.
      *
      * @param array  $characters
@@ -252,9 +239,7 @@ class Check
      * @return string
      */
     private function generateEscapedExpression(
-        array $characters = array(),
-        array $escapedCharacters = array(),
-        $quantifier = '*?'
+    array $characters = array(), array $escapedCharacters = array(), $quantifier = '*?'
     ) {
         $regex = $escapedCharacters;
         foreach ($characters as $character) {
@@ -264,30 +249,26 @@ class Check
         return '[' . implode('', $regex) . ']' . $quantifier;
     }
 
-    /**
+    /*
      * Generates the separator regular expression.
      *
      * @return string
      */
-    private function generateSeparatorExpression()
-    {
+    private function generateSeparatorExpression() {
         return $this->generateEscapedExpression($this->separatorCharacters, $this->escapedSeparatorCharacters);
     }
 
-    /**
+    /*
      * Generates a list of regular expressions for each character substitution.
      *
      * @return array
      */
-    protected function generateCharacterExpressions()
-    {
+    protected function generateCharacterExpressions() {
         $characterExpressions = array();
         foreach ($this->characterSubstitutions as $character => $substitutions) {
-            $characterExpressions[ $character ] = $this->generateEscapedExpression(
-                    $substitutions,
-                    array(),
-                    '+?'
-                ) . self::SEPARATOR_PLACEHOLDER;
+            $characterExpressions[$character] = $this->generateEscapedExpression(
+                            $substitutions, array(), '+?'
+                    ) . self::SEPARATOR_PLACEHOLDER;
         }
 
         return $characterExpressions;
