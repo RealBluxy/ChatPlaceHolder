@@ -148,9 +148,9 @@ class Check
     protected $separatorExpression;
     protected $characterExpressions;
 
-    public function __construct(AntiSpamPro $plugin) {
+    public function __construct(main $plugin) {
         $this->plugin = $plugin;
-        $this->profanities = (new Config($this->plugin->getDataFolder() . "swearwords.yml"))->getAll()["swearwords"];
+        $this->profanities = (new Config($this->plugin->getDataFolder() . "swearwords.yml"))->getAll();
 
         $this->separatorExpression = $this->generateSeparatorExpression();
         $this->characterExpressions = $this->generateCharacterExpressions();
