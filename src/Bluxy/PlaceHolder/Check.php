@@ -2,7 +2,7 @@
 
 namespace Bluxy\PlaceHolder;
 
-use pocketmine\plugin\Pluginbase;
+use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use Bluxy\PlaceHolder\main;
 
