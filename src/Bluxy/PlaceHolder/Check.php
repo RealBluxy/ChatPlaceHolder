@@ -8,7 +8,7 @@ use Bluxy\PlaceHolder\main;
 
 class Check
 {
-    public $plugin
+    public $plugin;
     const SEPARATOR_PLACEHOLDER = '{!!}';
 
     /**
