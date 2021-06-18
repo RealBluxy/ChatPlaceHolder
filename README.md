@@ -4,7 +4,8 @@
 ## Overview
 This Plugin Replaces A text You Choosee With Another One You Choose, This is Called Place Holding.
 
-**Eg**: When A player types [<3] in the chatn the plugin replaces it with the following symbol "♥"
+**Eg**: When A player types [<3] in the chat the plugin replaces it with the following symbol "♥"
+**Eg**: When A Player Typrs :discord-link: in the chat the plugin replaces it with "discord.gg/ChatPlaceHolder"
 
 ## Installation
 
@@ -26,6 +27,7 @@ to install this plugin, simply download it from poggit and place the `ChatPlaceH
 - [ ] Anti Command Spam
 - [ ] Vip Chat
 - [ ] Staff Chat
+- [ ] Chat Log
 
 Have An Idea ? Suggest it via discord "Bluxy#0001"
 
