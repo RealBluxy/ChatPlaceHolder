@@ -28,6 +28,7 @@ to install this plugin, simply download it from poggit and place the `ChatPlaceH
 - [ ] Vip Chat
 - [ ] Staff Chat
 - [ ] Chat Log
+- [ ] Custom Word Blocking
 
 Have An Idea ? Suggest it via discord "Bluxy#0001"
 
