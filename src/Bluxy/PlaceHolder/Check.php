@@ -178,7 +178,7 @@ class Check
         }
         }
 
-        foreach ($profanities as $profanity) {
+        foreach ((array) $profanities as $profanity) {
             if ($this->stringHasProfanity($string, $profanity)) {
                 return true;
             }
