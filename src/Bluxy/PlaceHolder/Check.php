@@ -1,5 +1,5 @@
 <?php
-
+//HUGE Thanks To : https://github.com/developerdino/ProfanityFilter
 namespace Bluxy\PlaceHolder;
 
 use pocketmine\plugin\PluginBase;
@@ -171,9 +171,11 @@ class Check
         $profanityCount = count($this->profanities);
 
         for ($i = 0; $i < $profanityCount; $i++) {
+            if(isset($profanities[$i])){
             $profanities[$i] = $this->generateProfanityExpression(
                     $this->profanities[$i], $this->characterExpressions, $this->separatorExpression
             );
+        }
         }
 
         foreach ($profanities as $profanity) {
