@@ -74,9 +74,9 @@ class main extends PluginBase implements Listener {
             $this->saveDefaultConfig();
         }
     
-   public function astrpos($haystack, $needle) {
+   function astrpos($haystack, $needle) {
     if(!is_array($needle)) $needle = array($needle);
-    foreach($needle as $query) {
+    foreach((array) $needle as $query) {
         if(stripos($haystack, $query) !== false) return true;
     }
     return false;
