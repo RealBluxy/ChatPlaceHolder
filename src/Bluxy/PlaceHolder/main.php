@@ -123,7 +123,7 @@ class main extends PluginBase implements Listener {
             //ads check
             $ads = [".leet.cc", ".net", ".com", ".us", ".co", ".co.uk", ".ddns", ".ddns.net", ".cf", ".me", ".cc", ".ru", ".eu", ".tk", ".gq", ".ga", ".ml", ".org", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8", ".9", "my server"];
             if ($this->config->get("AntiAdertising") == "true") {
-                if (astrpos($msg, $ads)) {
+                if ($this->astrpos($msg, $ads)) {
                     $p->sendMessage($this->config->get("NoAdsMsg"));
                     $e->setCancelled();
                     return;
@@ -142,7 +142,7 @@ class main extends PluginBase implements Listener {
             //no unicodes
             $unis = (new Config($this->getDataFolder() . "unicodes.yml"))->getAll()["unicodes"];
             if ($this->config->get("AntiUnicodes") == "true") {
-                if (astrpos($msg, $unis)) {
+                if ($this->astrpos($msg, $unis)) {
                     $p->sendMessage($this->config->get("NoUnicodesMsg"));
                     $e->setCancelled();
                     return;
