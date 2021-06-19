@@ -167,7 +167,7 @@ class Check
             return false;
         }
 
-        $profanities = [];
+        $profanities = array();
         $profanityCount = count($this->profanities);
 
         for ($i = 0; $i < $profanityCount; $i++) {
@@ -177,13 +177,13 @@ class Check
             );
         }
         }
-        if(is_array($profanities)) {
+        
         foreach ((array) $profanities as $profanity) {
             if ($this->stringHasProfanity($string, $profanity)) {
                 return true;
             }
         }
-       }
+       
 
         return false;
     }
