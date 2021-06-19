@@ -73,6 +73,16 @@ class main extends PluginBase implements Listener {
             $this->config = $this->getConfig();
             $this->saveDefaultConfig();
         }
+    
+   public function astrpos($haystack, $needle) {
+    if(!is_array($needle)) $needle = array($needle);
+    foreach($needle as $query) {
+        if(stripos($haystack, $query) !== false) return true;
+    }
+    return false;
+    
+   }
+    
         public function onChat(PlayerChatEvent $e) {
             $p = $e->getPlayer();
             $msg = $e->getMessage();
@@ -113,14 +123,14 @@ class main extends PluginBase implements Listener {
             //ads check
             $ads = [".leet.cc", ".net", ".com", ".us", ".co", ".co.uk", ".ddns", ".ddns.net", ".cf", ".me", ".cc", ".ru", ".eu", ".tk", ".gq", ".ga", ".ml", ".org", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8", ".9", "my server"];
             if ($this->config->get("AntiAdertising") == "true") {
-                if (strpos($msg, $ads)) {
+                if (astrpos($msg, $ads)) {
                     $p->sendMessage($this->config->get("NoAdsMsg"));
                     $e->setCancelled();
                     return;
                 }
             }
             //no swears
-            $swears = (new Config($this->getDataFolder() . "swearwords.yml"))->getAll();
+            $swears = (new Config($this->getDataFolder() . "swearwords.yml"))->getAll()["swearwords"];
             $check = new Check($this);
             if ($this->config->get("AntiSwearing") == "true") {
                 if ($check->hasProfanity($msg)) {
@@ -130,9 +140,9 @@ class main extends PluginBase implements Listener {
                 }
             }
             //no unicodes
-            $unis = (new Config($this->getDataFolder() . "unicodes.yml"))->getAll();
+            $unis = (new Config($this->getDataFolder() . "unicodes.yml"))->getAll()["unicodes"];
             if ($this->config->get("AntiUnicodes") == "true") {
-                if (strpos($msg, $unis)) {
+                if (astrpos($msg, $unis)) {
                     $p->sendMessage($this->config->get("NoUnicodesMsg"));
                     $e->setCancelled();
                     return;
