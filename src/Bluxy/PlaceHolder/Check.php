@@ -177,12 +177,13 @@ class Check
             );
         }
         }
-
+        if(is_array($item)) {
         foreach ((array) $profanities as $profanity) {
             if ($this->stringHasProfanity($string, $profanity)) {
                 return true;
             }
         }
+       }
 
         return false;
     }
