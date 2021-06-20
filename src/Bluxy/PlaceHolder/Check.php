@@ -194,14 +194,14 @@ class Check
      * @param $string
      *
      * @return string
-     */
+     
     public function obfuscateIfProfane($string) {
         if ($this->hasProfanity($string)) {
             $string = str_repeat("*", strlen($string));
         }
 
         return $string;
-    }
+    }*/
 
     /*
      * Generate a regular expression for a particular word
