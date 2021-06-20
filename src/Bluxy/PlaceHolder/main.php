@@ -132,7 +132,7 @@ class main extends PluginBase implements Listener {
                 if ($check->hasProfanity($msg)) {
                     $p->sendMessage($this->config->get("NoswearsMsg"));
                     $e->setCancelled();
-                    return;
+                    
                 }
                
             }
