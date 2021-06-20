@@ -1,4 +1,4 @@
-<?php
+<?php //findone only funciyon
 /*
  * " Hey? What Are You Doing Here ? Unless You Know What You are Doing ,  You Should Probaply Close This File And Stay Safe ! "
  *
