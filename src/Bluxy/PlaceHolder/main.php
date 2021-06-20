@@ -74,14 +74,7 @@ class main extends PluginBase implements Listener {
             $this->saveDefaultConfig();
         }
     
-   function astrpos($haystack, $needle) {
-    if(!is_array($needle)) $needle = array($needle);
-    foreach((array) $needle as $query) {
-        if(stripos($haystack, $query) !== false) return true;
-    }
-    return false;
-    
-   }
+ 
     
         public function onChat(PlayerChatEvent $e) {
             $p = $e->getPlayer();
@@ -123,11 +116,14 @@ class main extends PluginBase implements Listener {
             //ads check
             $ads = [".leet.cc", ".net", ".com", ".us", ".co", ".co.uk", ".ddns", ".ddns.net", ".cf", ".me", ".cc", ".ru", ".eu", ".tk", ".gq", ".ga", ".ml", ".org", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8", ".9", "my server"];
             if ($this->config->get("AntiAdertising") == "true") {
-                if ($this->astrpos($msg, $ads)) {
+                 foreach((array) $ads as $ad) {
+                if ($this->stripos($msg, $ad) !== false) {
                     $p->sendMessage($this->config->get("NoAdsMsg"));
                     $e->setCancelled();
-                    return;
+                    return true;
                 }
+                     return false;
+                 }
             }
             //no swears
             $swears = (new Config($this->getDataFolder() . "swearwords.yml"))->getAll()["swearwords"];
@@ -138,15 +134,19 @@ class main extends PluginBase implements Listener {
                     $e->setCancelled();
                     return;
                 }
+               
             }
             //no unicodes
             $unis = (new Config($this->getDataFolder() . "unicodes.yml"))->getAll()["unicodes"];
             if ($this->config->get("AntiUnicodes") == "true") {
-                if ($this->astrpos($msg, $unis)) {
+                 foreach((array) $unis as $uni) {
+                if ($this->stripos($msg, $uni) !== false) {
                     $p->sendMessage($this->config->get("NoUnicodesMsg"));
                     $e->setCancelled();
-                    return;
+                    return true;
                 }
+                     return false;
+                 }
             }
             //anti spam
             //mute chat
