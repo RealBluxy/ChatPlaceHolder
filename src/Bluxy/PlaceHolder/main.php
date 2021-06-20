@@ -117,7 +117,7 @@ class main extends PluginBase implements Listener {
             $ads = [".leet.cc", ".net", ".com", ".us", ".co", ".co.uk", ".ddns", ".ddns.net", ".cf", ".me", ".cc", ".ru", ".eu", ".tk", ".gq", ".ga", ".ml", ".org", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8", ".9", "my server"];
             if ($this->config->get("AntiAdertising") == "true") {
                  foreach((array) $ads as $ad) {
-                if ($this->stripos($msg, $ad) !== false) {
+                if (stripos($msg, $ad) !== false) {
                     $p->sendMessage($this->config->get("NoAdsMsg"));
                     $e->setCancelled();
                     return true;
@@ -140,7 +140,7 @@ class main extends PluginBase implements Listener {
             $unis = (new Config($this->getDataFolder() . "unicodes.yml"))->getAll()["unicodes"];
             if ($this->config->get("AntiUnicodes") == "true") {
                  foreach((array) $unis as $uni) {
-                if ($this->stripos($msg, $uni) !== false) {
+                if (stripos($msg, $uni) !== false) {
                     $p->sendMessage($this->config->get("NoUnicodesMsg"));
                     $e->setCancelled();
                     return true;
