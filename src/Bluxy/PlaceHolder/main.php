@@ -74,7 +74,15 @@ class main extends PluginBase implements Listener {
             $this->saveDefaultConfig();
         }
     
- 
+   public function look($string, $array) {
+    if(!is_array($array)){ 
+        $array = array($array);
+    }
+    foreach($array as $find) {
+        if(stripos($string, $find) !== false) return true;
+    }
+    return false;
+   }
     
         public function onChat(PlayerChatEvent $e) {
             $p = $e->getPlayer();
@@ -116,15 +124,13 @@ class main extends PluginBase implements Listener {
             //ads check
             $ads = [".leet.cc", ".net", ".com", ".us", ".co", ".co.uk", ".ddns", ".ddns.net", ".cf", ".me", ".cc", ".ru", ".eu", ".tk", ".gq", ".ga", ".ml", ".org", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8", ".9", "my server"];
             if ($this->config->get("AntiAdertising") == "true") {
-                 foreach((array) $ads as $ad) {
-                if (stripos($msg, $ad) !== false) {
-                    $p->sendMessage($this->config->get("NoAdsMsg"));
+                 
+                    if ($this->look($msg, $ads)) {
+                         $p->sendMessage($this->config->get("NoAdsMsg"));
                     $e->setCancelled();
-                    return true;
+                    }
                 }
-                     return false;
-                 }
-            }
+            
             //no swears
             $swears = (new Config($this->getDataFolder() . "swearwords.yml"))->getAll()["swearwords"];
             $check = new Check($this);
@@ -139,14 +145,10 @@ class main extends PluginBase implements Listener {
             //no unicodes
             $unis = (new Config($this->getDataFolder() . "unicodes.yml"))->getAll()["unicodes"];
             if ($this->config->get("AntiUnicodes") == "true") {
-                 foreach((array) $unis as $uni) {
-                if (stripos($msg, $uni) !== false) {
-                    $p->sendMessage($this->config->get("NoUnicodesMsg"));
+                  if ($this->look($msg, $unis)) {
+                         $p->sendMessage($this->config->get("NoAdsMsg"));
                     $e->setCancelled();
-                    return true;
-                }
-                     return false;
-                 }
+                    }
             }
             //anti spam
             //mute chat
