@@ -1,4 +1,4 @@
-<?php //findone only funciyon
+<?php 
 /*
  * " Hey? What Are You Doing Here ? Unless You Know What You are Doing ,  You Should Probaply Close This File And Stay Safe ! "
  *
@@ -83,7 +83,10 @@ class main extends PluginBase implements Listener {
     }
     return false;
    }
-    
+        /**
+         * @param PlayerChatEvent $e
+         * @priority HIGH
+         */
         public function onChat(PlayerChatEvent $e) {
             $p = $e->getPlayer();
             $msg = $e->getMessage();
