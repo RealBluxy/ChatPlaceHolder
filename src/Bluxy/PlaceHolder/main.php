@@ -58,6 +58,8 @@ use Bluxy\PlaceHolder\Check;
 
 class main extends PluginBase implements Listener {
     public $config;
+    public $unicodes;
+    public $swears;
     public function onEnable() {
         $this->getServer()->GetPluginManager()->registerEvents($this, $this);
         @mkdir($this->getDataFolder());
