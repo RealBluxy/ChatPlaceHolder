@@ -148,7 +148,7 @@ class main extends PluginBase implements Listener {
                
             }
             //no unicodes
-            $unis = new Config($this->getDataFolder() . "unicodes.yml", Config::YAML)->getAll();
+            $unis = (new Config($this->getDataFolder() . "unicodes.yml", Config::YAML))->getAll();
             if ($this->config->get("AntiUnicodes")) {
                   if ($this->look($msg, $this->unicodes)) {
                          $p->sendMessage($this->config->get("NoUnicodesMsg"));
