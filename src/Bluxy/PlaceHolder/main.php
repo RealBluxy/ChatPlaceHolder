@@ -64,14 +64,18 @@ class main extends PluginBase implements Listener {
         $this->saveResource("config.yml");
         $this->saveResource("swearwords.yml");
         $this->saveResource("unicodes.yml");
-        $this->config = $this->getConfig(); //todo: might change this ti just   this-getconfig
+        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+        $this->swears = new Config($this->getDataFolder() . "swearwords.yml", Config::YAML);
+        $this->unicodes = new Config($this->getDataFolder() . "unicodes.yml", Config::YAML);
+
         $this->saveDefaultConfig();
     }
     public function onDisable():
         void {
             @mkdir($this->getDataFolder());
             $this->saveResource("config.yml");
-            $this->config = $this->getConfig();
+            $this->saveResource("swearwords.yml");
+            $this->saveResource("unicodes.yml");
             $this->saveDefaultConfig();
         }
     
@@ -84,10 +88,7 @@ class main extends PluginBase implements Listener {
     }
     return false;
    }
-        /**
-         * @param PlayerChatEvent $e
-         * @priority HIGH
-         */
+        
         public function onChat(PlayerChatEvent $e) {
             $p = $e->getPlayer();
             $msg = $e->getMessage();
@@ -125,9 +126,10 @@ class main extends PluginBase implements Listener {
             $replacearray = array($replace1, $replace2, $replace3, $replace4, $replace5, $replace6, $replace7, $replace8, $replace9, $replace10, $replace11, $replace12, $replace13, $replace14, $replace15);
             $msgedit = str_ireplace($findarray, $replacearray, $e->getMessage());
             $e->setMessage($msgedit);
-            //ads check
+            
+            //ads check          
             $ads = [".leet.cc", ".net", ".com", ".us", ".co", ".co.uk", ".ddns", ".ddns.net", ".cf", ".me", ".cc", ".ru", ".eu", ".tk", ".gq", ".ga", ".ml", ".org", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8", ".9", "my server"];
-            if ($this->config->get("AntiAdertising") == "true") {
+            if ($this->config->get("AntiAdvertising")) {
                  
                     if ($this->look($msg, $ads)) {
                          $p->sendMessage($this->config->get("NoAdsMsg"));
@@ -136,9 +138,8 @@ class main extends PluginBase implements Listener {
                 }
             
             //no swears
-            $swears = (new Config($this->getDataFolder() . "swearwords.yml"))->getAll()["swearwords"];
             $check = new Check($this);
-            if ($this->config->get("AntiSwearing") == "true") {
+            if ($this->config->get("AntiSwearing")) {
                 if ($check->hasProfanity($msg)) {
                     $p->sendMessage($this->config->get("NoswearsMsg"));
                     $e->setCancelled();
@@ -147,17 +148,14 @@ class main extends PluginBase implements Listener {
                
             }
             //no unicodes
-            $unis = (new Config($this->getDataFolder() . "unicodes.yml"))->getAll()["unicodes"];
-            if ($this->config->get("AntiUnicodes") == "true") {
-                  if ($this->look($msg, $unis)) {
-                         $p->sendMessage($this->config->get("NoAdsMsg"));
+            $unis = new Config($this->getDataFolder() . "unicodes.yml", Config::YAML)->getAll();
+            if ($this->config->get("AntiUnicodes")) {
+                  if ($this->look($msg, $this->unicodes)) {
+                         $p->sendMessage($this->config->get("NoUnicodesMsg"));
                     $e->setCancelled();
                     }
             }
-            //anti spam
-            //mute chat
-            //muteplayer
-            //neplugin: anti raid
+            
             
         }
     }
