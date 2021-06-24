@@ -5,4 +5,5 @@ branches:
 projects:
   ChatPlaceHolder:
     path: ""
+    icon: icon.gif
 ...
