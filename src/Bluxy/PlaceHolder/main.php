@@ -81,15 +81,22 @@ class main extends PluginBase implements Listener {
             $this->saveDefaultConfig();
         }
     
-   public function look($string, $array) {
-    if(!is_array($array)){ 
-        $array = array($array);
-    }
-    foreach($array as $find) {
-        if(stripos($string, $find) !== false) return true;
-    }
-    return false;
-   }
+   public function look($haystack, $needles) {
+        if ( is_array($needles) ) {
+           foreach ($needles as $str) {
+        if ( is_array($str) ) {
+           $pos = $this->look($haystack, $str);
+        } else {
+           $pos = stripos($haystack, $str);
+        }
+        if ($pos !== FALSE) {
+           return true;
+        }
+        }
+        } else {
+        return false;
+        }
+        }
         
         public function onChat(PlayerChatEvent $e) {
             $p = $e->getPlayer();
@@ -150,7 +157,7 @@ class main extends PluginBase implements Listener {
                
             }
             //no unicodes
-            $unis = (new Config($this->getDataFolder() . "unicodes.yml", Config::YAML))->getAll();
+            $unis = $this->unicodes->get("unicodes")
             if ($this->config->get("AntiUnicodes")) {
                   if ($this->look($msg, $this->unicodes)) {
                          $p->sendMessage($this->config->get("NoUnicodesMsg"));
