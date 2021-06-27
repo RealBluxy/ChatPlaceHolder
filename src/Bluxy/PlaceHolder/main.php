@@ -67,8 +67,8 @@ class main extends PluginBase implements Listener {
         $this->saveResource("swearwords.yml");
         $this->saveResource("unicodes.yml");
         $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
-        $this->swears = new Config($this->getDataFolder() . "swearwords.yml", Config::YAML);
-        $this->unicodes = new Config($this->getDataFolder() . "unicodes.yml", Config::YAML);
+         $this->unis = new Config($this->getDataFolder() . "unicodes.yml", Config::YAML);
+        
 
         $this->saveDefaultConfig();
     }
@@ -80,23 +80,33 @@ class main extends PluginBase implements Listener {
             $this->saveResource("unicodes.yml");
             $this->saveDefaultConfig();
         }
-    
+   /* public function look($string, $array) {
+    if(!is_array($array)){ 
+        $array = (array) array($array);
+    }
+    foreach ($array as $find) {
+        if(stripos($string, $find) !== false){ 
+        return true;
+        }
+    return false;
+   }
+   }*/
    public function look($haystack, $needles) {
-        if ( is_array($needles) ) {
-           foreach ($needles as $str) {
-        if ( is_array($str) ) {
-           $pos = $this->look($haystack, $str);
-        } else {
-           $pos = stripos($haystack, $str);
-        }
-        if ($pos !== FALSE) {
-           return true;
-        }
-        }
-        } else {
-        return false;
-        }
-        }
+      if ( is_array($needles) ) {
+foreach ($needles as $str) {
+if ( is_array($str) ) {
+$pos = $this->look($haystack, $str);
+} else {
+$pos = stripos($haystack, $str);
+}
+if ($pos !== FALSE) {
+return true;
+}
+}
+} else {
+return false;
+}
+}
         
         public function onChat(PlayerChatEvent $e) {
             $p = $e->getPlayer();
@@ -137,7 +147,7 @@ class main extends PluginBase implements Listener {
             $e->setMessage($msgedit);
             
             //ads check          
-            $ads = [".leet.cc", ".net", ".com", ".us", ".co", ".co.uk", ".ddns", ".ddns.net", ".cf", ".me", ".cc", ".ru", ".eu", ".tk", ".gq", ".ga", ".ml", ".org", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8", ".9", "my server"];
+            $ads = array(".leet.cc", ".net", ".com", ".us", ".co", ".co.uk", ".ddns", ".ddns.net", ".cf", ".me", ".cc", ".ru", ".eu", ".tk", ".gq", ".ga", ".ml", ".org", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8", ".9", "my server");
             if ($this->config->get("AntiAdvertising")) {
                  
                     if ($this->look($msg, $ads)) {
@@ -157,9 +167,9 @@ class main extends PluginBase implements Listener {
                
             }
             //no unicodes
-            $unis = $this->unicodes->get("unicodes")
+            $unis = $this->unis->get("unicodes");
             if ($this->config->get("AntiUnicodes")) {
-                  if ($this->look($msg, $this->unicodes)) {
+                  if ($this->look($msg, $unis)) {
                          $p->sendMessage($this->config->get("NoUnicodesMsg"));
                     $e->setCancelled();
                     }
