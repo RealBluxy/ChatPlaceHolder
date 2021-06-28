@@ -1,4 +1,4 @@
-# ChatPlaceHolder:
+# ChatPlaceHolder: [![](https://poggit.pmmp.io/shield.state/ChatPlaceHolder)](https://poggit.pmmp.io/p/ChatPlaceHolder) [![](https://img.shields.io/github/license/DarkWav/SAC.svg?label=License)](https://github.com/RealBluxy/ChatPlaceHolder/blob/master/LICENSE) 
 ## An Effective Chat Place Holder Plugin, With A lot Of Addtional Features!
 
 ## Overview
