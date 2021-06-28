@@ -58,7 +58,7 @@ use Bluxy\PlaceHolder\Check;
 
 class main extends PluginBase implements Listener {
     public $config;
-    public $unicodes;
+    public $unis;
     public $swears;
     public function onEnable() {
         $this->getServer()->GetPluginManager()->registerEvents($this, $this);
@@ -80,17 +80,7 @@ class main extends PluginBase implements Listener {
             $this->saveResource("unicodes.yml");
             $this->saveDefaultConfig();
         }
-   /* public function look($string, $array) {
-    if(!is_array($array)){ 
-        $array = (array) array($array);
-    }
-    foreach ($array as $find) {
-        if(stripos($string, $find) !== false){ 
-        return true;
-        }
-    return false;
-   }
-   }*/
+
    public function look($haystack, $needles) {
       if ( is_array($needles) ) {
 foreach ($needles as $str) {
